@@ -3,14 +3,18 @@ package com.cahemunoz.demomvvm
 
 import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.cahemunoz.demomvvm.infra.realm_viewmodels.UserListViewModel
+import com.cahemunoz.demomvvm.presentation.user_list.viewmodels.UserListViewModel
 import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class UserListViewModelTest {
 
-    private val viewModel by lazy { UserListViewModel(ApplicationProvider.getApplicationContext()) }
+    private val viewModel by lazy {
+        UserListViewModel(
+            ApplicationProvider.getApplicationContext()
+        )
+    }
 
     @Test
     fun shouldWork() {

@@ -1,4 +1,4 @@
-package com.cahemunoz.demomvvm.infra.views
+package com.cahemunoz.demomvvm.presentation.user_list
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -6,11 +6,12 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.cahemunoz.demomvvm.R
-import com.cahemunoz.demomvvm.infra.realm_viewmodels.UserListViewModel
+import com.cahemunoz.demomvvm.presentation.user_list.viewmodels.UserListViewModel
 import kotlinx.android.synthetic.main.activity_user_crud.*
 
 class UserCrudActivity: AppCompatActivity () {
-    private val userViewModel: UserListViewModel by lazy { ViewModelProviders.of(this).get(UserListViewModel::class.java) }
+    private val userViewModel: UserListViewModel by lazy { ViewModelProviders.of(this).get(
+        UserListViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

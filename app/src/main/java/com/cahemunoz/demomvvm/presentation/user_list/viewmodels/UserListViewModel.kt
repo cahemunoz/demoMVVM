@@ -1,12 +1,14 @@
-package com.cahemunoz.demomvvm.infra.realm_viewmodels
+package com.cahemunoz.demomvvm.presentation.user_list.viewmodels
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.cahemunoz.demomvvm.domain.models.User
-import com.cahemunoz.demomvvm.domain.users.UserService
-import com.cahemunoz.demomvvm.domain.users.UserServiceImpl
-import com.cahemunoz.demomvvm.infra.realm_repositories.RealmUserRepository
+import com.cahemunoz.demomvvm.base.ServiceGenerator
+import com.cahemunoz.demomvvm.business.entities.User
+import com.cahemunoz.demomvvm.business.user.UserService
+import com.cahemunoz.demomvvm.business.user.impl.UserServiceImpl
+import com.cahemunoz.demomvvm.repositories.user.RealmUserRepository
+import com.cahemunoz.demomvvm.repositories.user_api.RetrofitUserRepository
 import io.reactivex.disposables.CompositeDisposable
 import io.realm.Realm
 import java.util.*
@@ -20,7 +22,13 @@ class UserListViewModel(app: Application) : AndroidViewModel(app) {
     private val disposes = CompositeDisposable()
     private val realm = Realm.getDefaultInstance()
 
-    private val userService: UserService by lazy { UserServiceImpl(RealmUserRepository(realm)) }
+    private val userService: UserService by lazy {
+        UserServiceImpl(
+            localUserRepo = RealmUserRepository(realm),
+            createUserRepo = RealmUserRepository(realm),
+            apiUserRepo = ServiceGenerator.createService(RetrofitUserRepository::class.java)
+        )
+    }
 
 
     init {

@@ -10,9 +10,9 @@
             android:supportsRtl="true"
             android:name="com.cahemunoz.demomvvm.ExampleApplication"
             android:theme="@style/AppTheme">
-        <activity android:name="com.cahemunoz.demomvvm.infra.views.LoginActivity">
+        <activity android:name="com.cahemunoz.demomvvm.presentation.login.LoginActivity">
         </activity>
-        <activity android:name="com.cahemunoz.demomvvm.infra.views.UserCrudActivity">
+        <activity android:name="com.cahemunoz.demomvvm.presentation.user_list.UserCrudActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

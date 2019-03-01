@@ -1,10 +1,10 @@
-package com.cahemunoz.demomvvm.infra.views
+package com.cahemunoz.demomvvm.presentation.user_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cahemunoz.demomvvm.R
-import com.cahemunoz.demomvvm.domain.models.User
+import com.cahemunoz.demomvvm.business.entities.User
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {

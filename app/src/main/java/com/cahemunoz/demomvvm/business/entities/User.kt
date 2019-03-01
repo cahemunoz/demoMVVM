@@ -1,4 +1,4 @@
-package com.cahemunoz.demomvvm.domain.models
+package com.cahemunoz.demomvvm.business.entities
 
 import io.realm.RealmObject
 
