@@ -1,15 +1,15 @@
-package com.cahemunoz.demomvvm.infra.views
+package com.cahemunoz.demomvvm.presentation.user_list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.cahemunoz.demomvvm.R
-import com.cahemunoz.demomvvm.domain.models.User
+import com.cahemunoz.demomvvm.business.entities.User
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    var userList: MutableList<User> = mutableListOf()
+    private var userList: MutableList<User> = mutableListOf()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
@@ -25,4 +25,8 @@ class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         holder.itemView.usernameView.text = user.username
     }
 
+    fun swapList(userList: MutableList<User>) {
+        this.userList = userList
+        notifyDataSetChanged()
+    }
 }

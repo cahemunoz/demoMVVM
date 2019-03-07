@@ -1,6 +1,6 @@
-package com.cahemunoz.demomvvm.domain.time_ticker.impl
+package com.cahemunoz.demomvvm.business.time_ticker.impl
 
-import com.cahemunoz.demomvvm.domain.time_ticker.TimerService
+import com.cahemunoz.demomvvm.business.time_ticker.TimerService
 import io.reactivex.Flowable
 import java.util.*
 import java.util.concurrent.TimeUnit

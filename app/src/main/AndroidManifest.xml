@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.cahemunoz.demomvvm">
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
             android:allowBackup="true"
@@ -10,9 +11,9 @@
             android:supportsRtl="true"
             android:name="com.cahemunoz.demomvvm.ExampleApplication"
             android:theme="@style/AppTheme">
-        <activity android:name="com.cahemunoz.demomvvm.infra.views.LoginActivity">
+        <activity android:name="com.cahemunoz.demomvvm.presentation.time_ticker.TimeTickerActivity">
         </activity>
-        <activity android:name="com.cahemunoz.demomvvm.infra.views.UserCrudActivity">
+        <activity android:name="com.cahemunoz.demomvvm.presentation.user_list.UserCrudActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
