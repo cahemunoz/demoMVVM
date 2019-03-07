@@ -4,6 +4,7 @@ import com.cahemunoz.demomvvm.business.entities.User
 import io.reactivex.Completable
 import io.reactivex.Flowable
 
-interface UserApiRepository {
+interface UserLocalRepository {
     fun findAllUsers(): Flowable<MutableList<User>>
+    fun createUser(sername: String, email: String): Completable
 }
