@@ -4,6 +4,9 @@ import android.app.Application
 import io.realm.Realm
 import io.realm.RealmConfiguration
 
+/**
+ * I thought leave setup realm responsibility to each application
+ */
 class ExampleApplication: Application() {
     override fun onCreate() {
         super.onCreate()

@@ -7,10 +7,9 @@ import com.cahemunoz.demomvvm.business.user.repositories.UserLocalRepository
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
-import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import java.lang.Exception
-import java.lang.RuntimeException
+import java.util.concurrent.TimeUnit
 
 
 class UserServiceImpl(
@@ -22,18 +21,12 @@ class UserServiceImpl(
      * All methods with observe prefix should return a Flowable
      */
     override fun observeUsersOrderedById(): Flowable<MutableList<User>> {
-        // updateUsersFromRemote().subscribe()
-
-
-        return userLocalRepository.findAllUsers()
-            .mergeWith(
-                updateUsersFromRemote()
-                    .andThen(Flowable.empty())
-            )
+        return userLocalRepository.observeAllUsers()
     }
 
-    private fun updateUsersFromRemote(): Completable = userRemoteRepository.findAllUsers()
+    override fun updateUsersFromRemote(): Completable = userRemoteRepository.findAllUsers()
         .subscribeOn(Schedulers.io())
+        .delay(5L, TimeUnit.SECONDS)
         .doOnSuccess { apiUsers ->
             apiUsers.forEach {
                 if (it.username != null && it.email != null) {
@@ -46,6 +39,7 @@ class UserServiceImpl(
 
     override fun createUser(username: String, email: String):Completable {
         return userLocalRepository.createUser(username, email)
+            .subscribeOn(Schedulers.computation())
     }
 
     override fun findUserByUsername(username: String): Single<User> {

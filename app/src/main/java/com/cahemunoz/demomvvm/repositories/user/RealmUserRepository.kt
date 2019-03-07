@@ -7,25 +7,31 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 import io.realm.Realm
 
-class RealmUserRepository : UserLocalRepository {
-    override fun findAllUsers(): Flowable<MutableList<User>> {
-        Realm.getDefaultInstance().use { realm ->
-            val flow = realm.where(User::class.java)
-                .findAllAsync()
-                .asFlowable()
-                .map { it as MutableList<User> }
-                .doOnCancel {
-                    println("Fechouuuuuuu")
-                }
-            return flow
-        }
-    }
+class RealmUserRepository(private val realmUiThread: Realm) : UserLocalRepository {
 
-    override fun createUser(username: String, email: String): Completable = Completable.create {
+    /**
+     * All observe* methods should use realmUiThread
+     */
+    override fun observeAllUsers(): Flowable<MutableList<User>> =
+        realmUiThread.where(User::class.java)
+            .findAllAsync()
+            .asFlowable()
+            .map { it as MutableList<User> }
+
+    /**
+     * To make changes on database use a new realm instance (create, update, delete)
+     * don't forget close the instance.
+     * using instance.use{} auto closes the instance when the process ends.
+     */
+    override fun createUser(username: String, email: String): Completable = Completable.create { emitter ->
         Realm.getDefaultInstance().use {
-            it.executeTransactionAsync {realm ->
-                val user = realm.createObject(User::class.java, username)
-                user.email = email
+            it.executeTransactionAsync { realm ->
+                val user = User().apply {
+                    this.username = username
+                    this.email = email
+                }
+                realm.copyToRealmOrUpdate(user)
+                emitter.onComplete()
             }
         }
     }

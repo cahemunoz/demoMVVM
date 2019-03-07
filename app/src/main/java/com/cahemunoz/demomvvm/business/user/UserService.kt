@@ -9,7 +9,5 @@ interface UserService {
     fun findUserByUsername(username:String):Single<User>
     fun createUser(username: String, email:String): Completable
     fun observeUsersOrderedById(): Flowable<MutableList<User>>
-
-
-
+    fun updateUsersFromRemote(): Completable
 }

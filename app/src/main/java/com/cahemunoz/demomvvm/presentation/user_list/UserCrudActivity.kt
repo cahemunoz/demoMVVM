@@ -22,8 +22,7 @@ class UserCrudActivity: AppCompatActivity () {
 
         userViewModel.userList.observe(this, Observer { list ->
             listView.adapter?.let {
-                (it as UserAdapter).userList = list
-                it.notifyDataSetChanged()
+                (it as UserAdapter).swapList(list)
             }
         })
         createButton.setOnClickListener { userViewModel.create() }

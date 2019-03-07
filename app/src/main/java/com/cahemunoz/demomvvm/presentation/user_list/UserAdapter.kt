@@ -25,4 +25,8 @@ class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         holder.itemView.usernameView.text = user.username
     }
 
+    fun swapList(userList: MutableList<User>) {
+        this.userList = userList
+        notifyDataSetChanged()
+    }
 }

@@ -5,6 +5,6 @@ import io.reactivex.Completable
 import io.reactivex.Flowable
 
 interface UserLocalRepository {
-    fun findAllUsers(): Flowable<MutableList<User>>
-    fun createUser(sername: String, email: String): Completable
+    fun observeAllUsers(): Flowable<MutableList<User>>
+    fun createUser(username: String, email: String): Completable
 }
