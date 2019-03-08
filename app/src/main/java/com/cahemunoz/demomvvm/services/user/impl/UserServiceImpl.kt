@@ -9,6 +9,7 @@ import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
 import java.lang.Exception
+import java.lang.RuntimeException
 import java.util.concurrent.TimeUnit
 
 
@@ -20,7 +21,8 @@ class UserServiceImpl(
      * All methods with observe prefix should return a Flowable
      */
     override fun observeUsersOrderedById(): Flowable<MutableList<User>> {
-        return userLocalRepository.observeAllUsers()
+        return userLocalRepository.observeAllUsers().
+                doOnNext { throw RuntimeException("Errouuuu") }
     }
 
     override fun updateUsersFromRemote(): Completable = userRemoteRepository.findAllUsers()

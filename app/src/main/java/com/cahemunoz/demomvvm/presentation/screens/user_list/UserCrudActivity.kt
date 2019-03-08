@@ -1,6 +1,7 @@
 package com.cahemunoz.demomvvm.presentation.screens.user_list
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,6 +25,11 @@ class UserCrudActivity : AppCompatActivity() {
                 (it as UserAdapter).swapList(list)
             }
         })
+
+        userViewModel.isErrorMessageVisible.observe(this, Observer {
+            Toast.makeText(this@UserCrudActivity, userViewModel.errorMessage.value, Toast.LENGTH_SHORT).show()
+        })
+
         createButton.setOnClickListener { userViewModel.create() }
     }
 }
