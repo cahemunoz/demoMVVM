@@ -16,21 +16,21 @@ import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
 
-class UserServiceImpl : UserService {
-    private var userLocalRepository: UserLocalRepository? = RealmUserRepository(Realm.getDefaultInstance())
-    private var userRemoteRepository: UserRemoteRepository? = RetrofitUserApiRepository()
+class UserServiceImpl(
+    private var userLocalRepository: UserLocalRepository,
+    private var userRemoteRepository: UserRemoteRepository) : UserService {
 
     /**
      * All methods with observe prefix should return a Flowable
      */
     override fun observeUsersOrderedById(): Flowable<MutableList<User>> {
-        return userLocalRepository?.observeAllUsers() ?: Flowable.unsafeCreate { }
+        return userLocalRepository.observeAllUsers()
     }
 
-    override fun updateUsersFromRemote(): Completable = userRemoteRepository?.findAllUsers()
-        ?.subscribeOn(Schedulers.io())
-        ?.delay(5L, TimeUnit.SECONDS)
-        ?.doOnSuccess { apiUsers ->
+    override fun updateUsersFromRemote(): Completable = userRemoteRepository.findAllUsers()
+        .subscribeOn(Schedulers.io())
+        .delay(5L, TimeUnit.SECONDS)
+        .doOnSuccess { apiUsers ->
             apiUsers.forEach {
                 if (it.username != null && it.email != null) {
                     createUser(it.username!!, it.email!!).subscribe()
@@ -41,8 +41,8 @@ class UserServiceImpl : UserService {
 
 
     override fun createUser(username: String, email: String): Completable {
-        return userLocalRepository?.createUser(username, email)
-            ?.subscribeOn(Schedulers.computation()) ?: Completable.create { it.onComplete() }
+        return userLocalRepository.createUser(username, email)
+            .subscribeOn(Schedulers.computation())
     }
 
     override fun findUserByUsername(username: String): Single<User> {

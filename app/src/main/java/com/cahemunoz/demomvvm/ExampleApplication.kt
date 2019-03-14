@@ -8,13 +8,13 @@ import org.koin.android.ext.android.startKoin
 /**
  * I thought leave setup realm responsibility to each application
  */
-class ExampleApplication: Application() {
+class ExampleApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         Realm.init(this)
         val config = RealmConfiguration.Builder().build()
         Realm.setDefaultConfiguration(config)
-        startKoin(this, listOf(moduleTeste))
+        startKoin(this, listOf(moduleTest))
 
     }
 }
