@@ -4,18 +4,21 @@ import com.cahemunoz.demomvvm.business.entities.User
 import com.cahemunoz.demomvvm.business.user.UserService
 import com.cahemunoz.demomvvm.business.user.repositories.UserRemoteRepository
 import com.cahemunoz.demomvvm.business.user.repositories.UserLocalRepository
+import com.cahemunoz.demomvvm.repositories.user.RealmUserRepository
+import com.cahemunoz.demomvvm.repositories.user_api.RetrofitUserApiRepository
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
+import io.realm.Realm
+import org.koin.dsl.module.module
 import java.lang.Exception
 import java.util.concurrent.TimeUnit
 
 
 class UserServiceImpl(
-    private val userLocalRepository: UserLocalRepository,
-    private val userRemoteRepository: UserRemoteRepository
-) : UserService {
+    private var userLocalRepository: UserLocalRepository,
+    private var userRemoteRepository: UserRemoteRepository) : UserService {
 
     /**
      * All methods with observe prefix should return a Flowable
@@ -34,10 +37,10 @@ class UserServiceImpl(
                 } else
                     throw Exception("Usuario incompleto")
             }
-        }.ignoreElement()
+        }?.ignoreElement() ?: Completable.create { it.onComplete() }
 
 
-    override fun createUser(username: String, email: String):Completable {
+    override fun createUser(username: String, email: String): Completable {
         return userLocalRepository.createUser(username, email)
             .subscribeOn(Schedulers.computation())
     }
