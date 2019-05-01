@@ -11,9 +11,9 @@
             android:supportsRtl="true"
             android:name="com.cahemunoz.demomvvm.ExampleApplication"
             android:theme="@style/AppTheme">
-        <activity android:name="com.cahemunoz.demomvvm.presentation.time_ticker.TimeTickerActivity">
+        <activity android:name="com.cahemunoz.demomvvm.presentation.screens.time_ticker.TimeTickerActivity">
         </activity>
-        <activity android:name="com.cahemunoz.demomvvm.presentation.user_list.UserCrudActivity">
+        <activity android:name="com.cahemunoz.demomvvm.presentation.screens.user_list.UserCrudActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 

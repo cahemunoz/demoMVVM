@@ -1,10 +1,9 @@
 package com.cahemunoz.demomvvm.repositories.user
 
-import com.cahemunoz.demomvvm.business.entities.User
-import com.cahemunoz.demomvvm.business.user.repositories.UserLocalRepository
+import com.cahemunoz.demomvvm.services.entities.User
+import com.cahemunoz.demomvvm.services.user.repositories.UserLocalRepository
 import io.reactivex.Completable
 import io.reactivex.Flowable
-import io.reactivex.Single
 import io.realm.Realm
 
 class RealmUserRepository(private val realmUiThread: Realm) : UserLocalRepository {

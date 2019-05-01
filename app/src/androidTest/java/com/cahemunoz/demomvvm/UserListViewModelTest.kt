@@ -2,7 +2,7 @@ package com.cahemunoz.demomvvm
 
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.cahemunoz.demomvvm.business.entities.User
+import com.cahemunoz.demomvvm.services.entities.User
 import com.cahemunoz.demomvvm.repositories.user.RealmUserRepository
 import io.reactivex.*
 import io.reactivex.android.schedulers.AndroidSchedulers
