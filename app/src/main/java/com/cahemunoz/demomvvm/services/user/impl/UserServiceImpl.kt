@@ -21,8 +21,9 @@ class UserServiceImpl(
      * All methods with observe prefix should return a Flowable
      */
     override fun observeUsersOrderedById(): Flowable<MutableList<User>> {
-        return userLocalRepository.observeAllUsers().
-                doOnNext { throw RuntimeException("Errouuuu") }
+        return userLocalRepository.observeAllUsers()
+                // Error example
+                // .doOnNext { throw RuntimeException("Errouuuu") }
     }
 
     override fun updateUsersFromRemote(): Completable = userRemoteRepository.findAllUsers()
