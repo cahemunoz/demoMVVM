@@ -6,10 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import com.cahemunoz.demomvvm.services.entities.User
 import com.cahemunoz.demomvvm.services.user.UserService
 import com.cahemunoz.demomvvm.presentation._base.RealmRxViewModel
-import com.cahemunoz.demomvvm.presentation._base.RxViewModel
-import com.cahemunoz.demomvvm.repositories.user.RealmUserRepository
-import com.cahemunoz.demomvvm.repositories.user_api.RetrofitUserApiRepository
-import org.reactivestreams.Subscriber
 import java.util.*
 
 
