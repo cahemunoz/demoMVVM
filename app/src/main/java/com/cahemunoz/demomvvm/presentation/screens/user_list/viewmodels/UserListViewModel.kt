@@ -1,15 +1,15 @@
-package com.cahemunoz.demomvvm.presentation.user_list.viewmodels
+package com.cahemunoz.demomvvm.presentation.screens.user_list.viewmodels
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MutableLiveData
 import com.cahemunoz.demomvvm.services.entities.User
 import com.cahemunoz.demomvvm.services.user.UserService
-import com.cahemunoz.demomvvm.presentation._base.RealmRxViewModel
+import com.cahemunoz.demomvvm.presentation._base.RxViewModel
 import java.util.*
 
 
-class UserListViewModel(val userService: UserService) : RealmRxViewModel() {
+class UserListViewModel(val userService: UserService) : RxViewModel() {
 
     val userList: LiveData<MutableList<User>> = LiveDataReactiveStreams.fromPublisher(
         userService.observeUsersOrderedById()
@@ -29,7 +29,7 @@ class UserListViewModel(val userService: UserService) : RealmRxViewModel() {
         disposables.addAll(dispose)
     }
 
-    fun onUserListError(t: Throwable) {
+    private fun onUserListError(t: Throwable) {
         errorMessage.postValue(t.message)
         isErrorMessageVisible.postValue(true)
     }
