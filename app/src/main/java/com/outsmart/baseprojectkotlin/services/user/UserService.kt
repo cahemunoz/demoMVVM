@@ -1,6 +1,6 @@
 package com.outsmart.baseprojectkotlin.services.user
 
-import com.outsmart.baseprojectkotlin.services.entities.User
+import com.outsmart.baseprojectkotlin.services._entities.User
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single

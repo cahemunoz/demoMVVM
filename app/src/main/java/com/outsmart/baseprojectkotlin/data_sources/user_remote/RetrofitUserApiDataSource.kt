@@ -1,7 +1,7 @@
-package com.outsmart.baseprojectkotlin.repositories.user_remote
+package com.outsmart.baseprojectkotlin.data_sources.user_remote
 
-import com.outsmart.baseprojectkotlin.repositories._base.RetrofitRepositoryGenerator
-import com.outsmart.baseprojectkotlin.services.entities.User
+import com.outsmart.baseprojectkotlin.data_sources._base.RetrofitRepositoryGenerator
+import com.outsmart.baseprojectkotlin.services._entities.User
 import com.outsmart.baseprojectkotlin.services.user.repositories.UserRemoteRepository
 import io.reactivex.Single
 
@@ -9,7 +9,7 @@ import io.reactivex.Single
 /**
  * Mapper should be here
  */
-class RetrofitUserApiRepository: UserRemoteRepository {
+class RetrofitUserApiDataSource: UserRemoteRepository {
     private val userApi = RetrofitRepositoryGenerator.createRepository(RetrofitUserApi::class.java)
 
 

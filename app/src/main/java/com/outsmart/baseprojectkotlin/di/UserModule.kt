@@ -4,9 +4,9 @@ import com.outsmart.baseprojectkotlin.services.user.UserService
 import com.outsmart.baseprojectkotlin.services.user.impl.UserServiceImpl
 import com.outsmart.baseprojectkotlin.services.user.repositories.UserLocalRepository
 import com.outsmart.baseprojectkotlin.services.user.repositories.UserRemoteRepository
-import com.outsmart.baseprojectkotlin.presentation.screens.user_list.viewmodels.UserListViewModel
-import com.outsmart.baseprojectkotlin.repositories.user.RealmUserRepository
-import com.outsmart.baseprojectkotlin.repositories.user_remote.RetrofitUserApiRepository
+import com.outsmart.baseprojectkotlin.presentation.screens.user_list.UserListViewModel
+import com.outsmart.baseprojectkotlin.data_sources.user_local.RealmUserDataSource
+import com.outsmart.baseprojectkotlin.data_sources.user_remote.RetrofitUserApiDataSource
 import org.koin.androidx.viewmodel.ext.koin.viewModel
 import org.koin.dsl.module.module
 
@@ -16,8 +16,8 @@ val userModule = module {
 
     single<UserService> { UserServiceImpl(get(), get()) }
 
-    single<UserLocalRepository> { RealmUserRepository() }
+    single<UserLocalRepository> { RealmUserDataSource() }
 
-    single<UserRemoteRepository> { RetrofitUserApiRepository() }
+    single<UserRemoteRepository> { RetrofitUserApiDataSource() }
 
 }

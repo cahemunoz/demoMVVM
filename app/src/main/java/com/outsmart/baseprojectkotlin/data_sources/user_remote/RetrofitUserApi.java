@@ -1,4 +1,4 @@
-package com.outsmart.baseprojectkotlin.repositories.user_remote;
+package com.outsmart.baseprojectkotlin.data_sources.user_remote;
 
 
 import io.reactivex.Single;
@@ -12,6 +12,6 @@ public interface RetrofitUserApi {
 
     @NotNull
     @GET("/users")
-    Single<List<GithubUser>> findAllUsers();
+    Single<List<GithubUserApiModel>> findAllUsers();
 
 }

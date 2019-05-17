@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
-import com.outsmart.baseprojectkotlin.presentation.screens.time_ticker.viewmodels.TimeTickerViewModel
 import com.outsmart.baseprojectkotlin.R
 import com.outsmart.baseprojectkotlin.databinding.ActivityTimeTickerBinding
 

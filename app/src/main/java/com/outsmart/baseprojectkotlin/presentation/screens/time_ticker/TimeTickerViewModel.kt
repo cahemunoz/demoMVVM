@@ -1,4 +1,4 @@
-package com.outsmart.baseprojectkotlin.presentation.screens.time_ticker.viewmodels
+package com.outsmart.baseprojectkotlin.presentation.screens.time_ticker
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams

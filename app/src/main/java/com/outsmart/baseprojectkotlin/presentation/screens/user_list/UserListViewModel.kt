@@ -1,9 +1,9 @@
-package com.outsmart.baseprojectkotlin.presentation.screens.user_list.viewmodels
+package com.outsmart.baseprojectkotlin.presentation.screens.user_list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MutableLiveData
-import com.outsmart.baseprojectkotlin.services.entities.User
+import com.outsmart.baseprojectkotlin.services._entities.User
 import com.outsmart.baseprojectkotlin.services.user.UserService
 import com.outsmart.baseprojectkotlin.presentation._base.RxViewModel
 import java.util.*

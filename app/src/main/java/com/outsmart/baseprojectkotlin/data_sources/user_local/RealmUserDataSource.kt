@@ -1,13 +1,13 @@
-package com.outsmart.baseprojectkotlin.repositories.user
+package com.outsmart.baseprojectkotlin.data_sources.user_local
 
 import android.util.Log
-import com.outsmart.baseprojectkotlin.services.entities.User
+import com.outsmart.baseprojectkotlin.services._entities.User
 import com.outsmart.baseprojectkotlin.services.user.repositories.UserLocalRepository
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.realm.Realm
 
-class RealmUserRepository : UserLocalRepository {
+class RealmUserDataSource : UserLocalRepository {
 
     /**
      * All observe* methods should use realmUiThread
@@ -19,7 +19,7 @@ class RealmUserRepository : UserLocalRepository {
             .filter { it.isValid && it.isLoaded }
             .doOnCancel {
                 Realm.getDefaultInstance().close()
-                Log.d(RealmUserRepository::class.java.simpleName, "Realm instance closed on thread: " + Thread.currentThread().name )
+                Log.d(RealmUserDataSource::class.java.simpleName, "Realm instance closed on thread: " + Thread.currentThread().name )
             }
             .map { it as MutableList<User> }
 

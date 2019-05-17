@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.outsmart.baseprojectkotlin.R
-import com.outsmart.baseprojectkotlin.presentation.screens.user_list.viewmodels.UserListViewModel
 import kotlinx.android.synthetic.main.activity_user_crud.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

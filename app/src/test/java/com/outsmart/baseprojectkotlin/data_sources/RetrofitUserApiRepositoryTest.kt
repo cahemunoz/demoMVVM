@@ -1,10 +1,10 @@
-package com.outsmart.baseprojectkotlin.repositories
+package com.outsmart.baseprojectkotlin.data_sources
 
-import com.outsmart.baseprojectkotlin.repositories.user_remote.RetrofitUserApiRepository
+import com.outsmart.baseprojectkotlin.data_sources.user_remote.RetrofitUserApiDataSource
 import org.junit.Test
 
 class RetrofitUserApiRepositoryTest {
-    private val userApiRepository = RetrofitUserApiRepository()
+    private val userApiRepository = RetrofitUserApiDataSource()
 
     @Test
     fun shouldRetrieveUsers() {

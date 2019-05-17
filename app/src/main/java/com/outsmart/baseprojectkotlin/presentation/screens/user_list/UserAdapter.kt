@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.outsmart.baseprojectkotlin.R
-import com.outsmart.baseprojectkotlin.services.entities.User
+import com.outsmart.baseprojectkotlin.services._entities.User
 import kotlinx.android.synthetic.main.item_user.view.*
 
 class UserAdapter: RecyclerView.Adapter<RecyclerView.ViewHolder>() {

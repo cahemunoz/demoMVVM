@@ -1,4 +1,4 @@
-package com.outsmart.baseprojectkotlin.services.entities
+package com.outsmart.baseprojectkotlin.services._entities
 
 import io.realm.RealmObject
 import io.realm.annotations.PrimaryKey

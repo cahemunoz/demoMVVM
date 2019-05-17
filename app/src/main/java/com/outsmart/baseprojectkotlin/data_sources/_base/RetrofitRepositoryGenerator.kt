@@ -1,4 +1,4 @@
-package com.outsmart.baseprojectkotlin.repositories._base
+package com.outsmart.baseprojectkotlin.data_sources._base
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

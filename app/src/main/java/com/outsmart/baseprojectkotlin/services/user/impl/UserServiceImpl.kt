@@ -1,6 +1,6 @@
 package com.outsmart.baseprojectkotlin.services.user.impl
 
-import com.outsmart.baseprojectkotlin.services.entities.User
+import com.outsmart.baseprojectkotlin.services._entities.User
 import com.outsmart.baseprojectkotlin.services.user.UserService
 import com.outsmart.baseprojectkotlin.services.user.repositories.UserRemoteRepository
 import com.outsmart.baseprojectkotlin.services.user.repositories.UserLocalRepository
