@@ -8,7 +8,7 @@ apply plugin: 'realm-android'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId 'com.cahemunoz.demomvvm'
+        applicationId 'com.outsmart.baseprojectkotlin'
         minSdkVersion 19
         targetSdkVersion 28
         versionCode 1
@@ -28,7 +28,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-
+    productFlavors {
+    }
 }
 
 ext {
@@ -47,30 +48,24 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_extensions"
     implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
-
-    implementation "io.reactivex.rxjava2:rxkotlin:2.2.0"
-    implementation "io.reactivex.rxjava2:rxandroid:2.1.0"
-
+    implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
-
     implementation "org.koin:koin-android:$koin"
     // implementation 'org.koin:koin-android-scope:1.0.2
     implementation "org.koin:koin-androidx-scope:$koin"
     // implementation 'org.koin:koin-android-viewmodel:1.0.2'
     implementation "org.koin:koin-androidx-viewmodel:$koin"
-
     testImplementation 'androidx.test:core:1.1.0'
     testImplementation 'androidx.test.ext:junit:1.1.0'
     testImplementation 'androidx.test:runner:1.1.1'
     testImplementation 'androidx.test.espresso:espresso-core:3.1.1'
-
     androidTestImplementation 'androidx.test:core:1.1.0'
     androidTestImplementation 'androidx.test:rules:1.1.1'
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.ext:junit:1.1.0'
-
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
 }

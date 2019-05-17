@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.cahemunoz.demomvvm">
+          package="com.outsmart.baseprojectkotlin">
     <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
@@ -9,11 +9,11 @@
             android:label="@string/app_name"
             android:roundIcon="@mipmap/ic_launcher_round"
             android:supportsRtl="true"
-            android:name="com.cahemunoz.demomvvm.ExampleApplication"
+            android:name="com.outsmart.baseprojectkotlin.ExampleApplication"
             android:theme="@style/AppTheme">
-        <activity android:name="com.cahemunoz.demomvvm.presentation.screens.time_ticker.TimeTickerActivity">
+        <activity android:name="com.outsmart.baseprojectkotlin.presentation.screens.time_ticker.TimeTickerActivity">
         </activity>
-        <activity android:name="com.cahemunoz.demomvvm.presentation.screens.user_list.UserCrudActivity">
+        <activity android:name="com.outsmart.baseprojectkotlin.presentation.screens.user_list.UserCrudActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
