@@ -1,21 +1,30 @@
 package com.cahemunoz.demomvvm.repositories.user
 
+import android.util.Log
 import com.cahemunoz.demomvvm.services.entities.User
 import com.cahemunoz.demomvvm.services.user.repositories.UserLocalRepository
+import io.reactivex.BackpressureStrategy
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.realm.Realm
 
-class RealmUserRepository(private val realmUiThread: Realm) : UserLocalRepository {
+class RealmUserRepository : UserLocalRepository {
 
     /**
      * All observe* methods should use realmUiThread
      */
     override fun observeAllUsers(): Flowable<MutableList<User>> =
-        realmUiThread.where(User::class.java)
+        Realm.getDefaultInstance().where(User::class.java)
             .findAllAsync()
             .asFlowable()
+            .filter { it.isValid && it.isLoaded }
+            .doOnCancel {
+                Realm.getDefaultInstance().close()
+                Log.d(RealmUserRepository::class.java.simpleName, "Realm instance closed on thread: " + Thread.currentThread().name )
+            }
             .map { it as MutableList<User> }
+
 
     /**
      * To make changes on database use a new realm instance (create, update, delete)

@@ -1,11 +1,9 @@
 package com.cahemunoz.demomvvm
 
 
+import androidx.test.annotation.UiThreadTest
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.cahemunoz.demomvvm.services.entities.User
 import com.cahemunoz.demomvvm.repositories.user.RealmUserRepository
-import io.reactivex.*
-import io.reactivex.android.schedulers.AndroidSchedulers
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -13,21 +11,16 @@ import org.junit.runner.RunWith
 class UserListViewModelTest {
     private val userLocalRepo = RealmUserRepository()
 
+    @UiThreadTest
     @Test
     fun shouldWork() {
-        val flow = Flowable.create<MutableList<User>>({ emitter ->
-            val disp = userLocalRepo.observeAllUsers().forEach {
-                emitter.onNext(it)
-            }
-            emitter.setDisposable(disp)
-        }, BackpressureStrategy.LATEST)
-            .subscribeOn(AndroidSchedulers.mainThread())
+        val dispose = userLocalRepo.observeAllUsers()
             .subscribe {
-                println(it)
+                println(it.size)
             }
 
 
         Thread.sleep(5000)
-        flow.dispose()
+        dispose.dispose()
     }
 }
