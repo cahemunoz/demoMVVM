@@ -44,10 +44,10 @@ ext {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
+    implementation 'androidx.appcompat:appcompat:1.1.0-alpha05'
     implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_extensions"
     implementation "androidx.lifecycle:lifecycle-reactivestreams:$lifecycle_extensions"
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-beta1'
     implementation 'io.reactivex.rxjava2:rxkotlin:2.2.0'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -55,9 +55,7 @@ dependencies {
     implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
     implementation "com.squareup.okhttp3:logging-interceptor:$logging_interceptor"
     implementation "org.koin:koin-android:$koin"
-    // implementation 'org.koin:koin-android-scope:1.0.2
     implementation "org.koin:koin-androidx-scope:$koin"
-    // implementation 'org.koin:koin-android-viewmodel:1.0.2'
     implementation "org.koin:koin-androidx-viewmodel:$koin"
     testImplementation 'androidx.test:core:1.1.0'
     testImplementation 'androidx.test.ext:junit:1.1.0'
