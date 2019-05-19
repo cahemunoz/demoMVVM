@@ -9,9 +9,9 @@ import io.reactivex.Single
 /**
  * Mapper should be here
  */
-class RetrofitUserApiDataSource: UserRemoteRepository {
-    private val userApi = RetrofitRepositoryGenerator.createRepository(RetrofitUserApi::class.java)
-
+class RetrofitUserDataSource(
+    private var userApi: RetrofitUserApi
+): UserRemoteRepository {
 
     override fun findAllUsers(): Single<MutableList<User>> {
         return userApi.findAllUsers()

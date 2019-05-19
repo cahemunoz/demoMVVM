@@ -6,10 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 
-object RetrofitRepositoryGenerator {
-
-    private const val BASE_URL = "https://api.github.com/"
-
+class RetrofitGenerator(baseUrl: String) {
 
     private val logging = HttpLoggingInterceptor()
         .setLevel(HttpLoggingInterceptor.Level.NONE)
@@ -19,12 +16,11 @@ object RetrofitRepositoryGenerator {
 
     private val builder = Retrofit.Builder()
         .client(httpClient.build())
-        .baseUrl(BASE_URL)
+        .baseUrl(baseUrl)
         .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
         .addConverterFactory(GsonConverterFactory.create())
 
     private val retrofit = builder.build()
-
 
     fun <S> createRepository(repositoryClass: Class<S>): S {
         return retrofit.create(repositoryClass)

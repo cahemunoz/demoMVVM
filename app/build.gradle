@@ -57,6 +57,8 @@ dependencies {
     implementation "org.koin:koin-android:$koin"
     implementation "org.koin:koin-androidx-scope:$koin"
     implementation "org.koin:koin-androidx-viewmodel:$koin"
+
+    testImplementation "org.koin:koin-test:$koin"
     testImplementation 'androidx.test:core:1.1.0'
     testImplementation 'androidx.test.ext:junit:1.1.0'
     testImplementation 'androidx.test:runner:1.1.1'

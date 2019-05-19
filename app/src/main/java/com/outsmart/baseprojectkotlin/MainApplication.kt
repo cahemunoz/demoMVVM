@@ -1,6 +1,7 @@
 package com.outsmart.baseprojectkotlin
 
 import android.app.Application
+import com.outsmart.baseprojectkotlin.di.mainModule
 import com.outsmart.baseprojectkotlin.di.userModule
 import io.realm.Realm
 import io.realm.RealmConfiguration
@@ -15,6 +16,9 @@ class MainApplication : Application() {
         Realm.init(this)
         val config = RealmConfiguration.Builder().build()
         Realm.setDefaultConfiguration(config)
-        startKoin(this, listOf(userModule))
+        startKoin(this, listOf(
+            mainModule,
+            userModule
+        ))
     }
 }
