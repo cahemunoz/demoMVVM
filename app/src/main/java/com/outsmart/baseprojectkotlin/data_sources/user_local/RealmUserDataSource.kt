@@ -5,6 +5,7 @@ import com.outsmart.baseprojectkotlin.services._entities.User
 import com.outsmart.baseprojectkotlin.services.user.repositories.UserLocalRepository
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.android.schedulers.AndroidSchedulers
 import io.realm.Realm
 
 class RealmUserDataSource : UserLocalRepository {
@@ -16,13 +17,16 @@ class RealmUserDataSource : UserLocalRepository {
         Realm.getDefaultInstance().where(User::class.java)
             .findAllAsync()
             .asFlowable()
-            .filter { it.isValid && it.isLoaded }
+            .filter {
+                it.isValid && it.isLoaded
+            }
             .doOnCancel {
                 Realm.getDefaultInstance().close()
                 Log.d(RealmUserDataSource::class.java.simpleName, "Realm instance closed on thread: " + Thread.currentThread().name )
             }
-            .map { it as MutableList<User> }
-
+            .map {
+                it as MutableList<User>
+            }
 
     /**
      * To make changes on database use a new realm instance (create, update, delete)

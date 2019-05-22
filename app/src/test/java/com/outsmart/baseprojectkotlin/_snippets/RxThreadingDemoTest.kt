@@ -4,6 +4,7 @@ import io.reactivex.BackpressureStrategy
 import io.reactivex.Flowable
 import io.reactivex.schedulers.Schedulers
 import org.junit.Test
+import java.util.concurrent.TimeUnit
 import kotlin.random.*
 
 
@@ -156,6 +157,16 @@ class RxThreadingDemoTest {
                 println(it)
             }
         Thread.sleep(5000)
+    }
+
+
+    @Test
+    fun `should test flowables` () {
+        Flowable.interval(1, TimeUnit.SECONDS)
+            .test()
+            .awaitCount(5)
+            .assertValueAt(4, 4)
+            .dispose()
     }
 
 }
